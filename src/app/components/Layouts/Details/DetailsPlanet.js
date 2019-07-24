@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPlanet } from "../../globalStore/thunks/thunkPlanet";
+import { getPlanet } from "../../../globalStore/thunks/thunkPlanet";
 
 const DetailsPlanet = ({ match, history }) => {
   const dispatch = useDispatch();

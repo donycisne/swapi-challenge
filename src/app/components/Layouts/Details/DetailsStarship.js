@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getStarship } from "../../globalStore/thunks/thunkStarship";
+import { getStarship } from "../../../globalStore/thunks/thunkStarship";
 
 const DetailsStarship = ({ match, history }) => {
   const dispatch = useDispatch();

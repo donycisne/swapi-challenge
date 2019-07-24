@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getVehicle } from "../../globalStore/thunks/thunkVehicle";
+import { getVehicle } from "../../../globalStore/thunks/thunkVehicle";
 
 const DetailsVehicle = ({ match, history }) => {
   const dispatch = useDispatch();
@@ -42,9 +42,9 @@ const DetailsVehicle = ({ match, history }) => {
       {nameCharacters.map((pilot, index) => (
         <li key={pilot}>
           <Link
-            to={`/personajes/${pilot.slice(
-              pilot.indexOf("people") + "people".length + 1,
-              pilot.length - 1
+            to={`/personajes/${vehicle.pilots[index].slice(
+              vehicle.pilots[index].indexOf("people") + "people".length + 1,
+              vehicle.pilots[index].length - 1
             )}`}
           >
             {nameCharacters[index]}

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovie } from "../../globalStore/thunks/thunkMovie";
+import { getMovie } from "../../../globalStore/thunks/thunkMovie";
 
 const DetailsMovie = ({ match, history }) => {
   const dispatch = useDispatch();

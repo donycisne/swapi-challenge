@@ -22,9 +22,9 @@ export function getStarship(id) {
       });
       const nameCharacters = await Promise.all(promisesCharacters);
 
-      const promisesMovies = starship.films.map(async character => {
-        const request = await axios.get(character);
-        const response = request.data.name;
+      const promisesMovies = starship.films.map(async film => {
+        const request = await axios.get(film);
+        const response = request.data.title;
         return response;
       });
       const nameMovies = await Promise.all(promisesMovies);
