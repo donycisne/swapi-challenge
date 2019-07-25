@@ -32,6 +32,8 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: "#fff",
+    width: "100%",
+    padding: "6px",
     "&:hover": {
       textDecoration: "none"
     }
@@ -42,10 +44,11 @@ const ButtonHome = withStyles(theme => ({
   root: {
     width: "150px",
     backgroundColor: "#000",
-    border: "2px solid #ffee00",
+    border: "2px solid #d2a600",
     margin: "12px",
+    padding: "0",
     "&:hover": {
-      backgroundColor: "#405400"
+      backgroundColor: "#444444"
     }
   }
 }))(Button);

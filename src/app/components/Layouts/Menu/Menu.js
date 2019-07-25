@@ -1,7 +1,6 @@
 import React from "react";
 import { Link as RouteLink } from "react-router-dom";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 import ListItem from "@material-ui/core/ListItem";
@@ -12,70 +11,90 @@ import List from "@material-ui/core/List";
 
 const useStyles = makeStyles(theme => ({
   menu: {
-    backgroundColor: "pink"
+    padding: "0"
   },
-  title: {
-    color: "#000",
+  sections: {
+    padding: "0"
+  },
+  logo: {
+    textAlign: "center",
+    backgroundColor: "#000",
+    marginBottom: "4px",
+    "&:hover": {
+      backgroundColor: "#000"
+    }
+  },
+  logoTitle: {
+    color: "#d2a600",
     fontSize: "32px",
     fontWeight: "700",
     textTransform: "uppercase",
     padding: "30px 15px"
   },
-  menuList: {
-    backgroundColor: "purple"
+  sectionList: {
+    padding: "0"
   },
-  button: {
-    backgroundColor: "#000",
-    borderRadius: "50%",
-    minWidth: "36px"
-  },
-  icon: {
-    color: "#fff"
-  },
-  text: {
-    color: "#000"
-  },
-  logo: {
-    textAlign: "center",
-    backgroundColor: "#d2a600",
+  sectionText: {
+    margin: "4px 0",
+    color: "#000",
+    width: "100%",
+    padding: "16px 32px",
+    backgroundColor: "#e2e2e2",
+    fontSize: "16px",
     "&:hover": {
-      backgroundColor: "#d2a600"
+      textDecoration: "none",
+      backgroundColor: "#afafaf"
+    },
+    "&:active": {
+      backgroundColor: "#afafaf"
     }
-  },
-  list: {
-    padding: "0"
-  },
-  containerMenu: {
-    padding: "0"
   }
 }));
 
 const Menu = () => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    menu: false
-  });
+  const [menu, setMenu] = React.useState(false);
+  // eslint-disable-next-line
+  const [categories, setCategories] = React.useState([
+    {
+      route: "/peliculas",
+      text: "Peliculas"
+    },
+    {
+      route: "/personajes",
+      text: "Personajes"
+    }
+  ]);
+
+  const routeCategories = categories.map(c => c.route);
+  const textCategories = categories.map(c => c.text);
 
   const toggleMenu = (side, open) => event => {
-    setState({ ...state, [side]: open });
+    setMenu(open);
   };
 
   const sideMenu = side => (
     <Container
-      className={classes.containerMenu}
       role="presentation"
+      className={classes.menu}
       onClick={toggleMenu(side, false)}
       onKeyDown={toggleMenu(side, false)}
     >
-      <List className={classes.list}>
+      <List className={classes.sections}>
         <ListItem button className={classes.logo}>
-          <Link to="/" component={RouteLink} className={classes.title}>
+          <Link to="/" component={RouteLink} className={classes.logoTitle}>
             Star Wars
           </Link>
         </ListItem>
-        {["Peliculas", "Personajes"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} className={classes.text} />
+        {routeCategories.map((route, index) => (
+          <ListItem button key={route} className={classes.sectionList}>
+            <Link
+              to={route}
+              component={RouteLink}
+              className={classes.sectionText}
+            >
+              {textCategories[index]}
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -88,7 +107,7 @@ const Menu = () => {
         <MenuIcon />
       </IconButton>
       <SwipeableDrawer
-        open={state.menu}
+        open={menu}
         onClose={toggleMenu("menu", false)}
         onOpen={toggleMenu("menu", true)}
       >
