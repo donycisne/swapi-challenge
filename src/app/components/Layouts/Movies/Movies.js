@@ -9,11 +9,11 @@ import { makeStyles } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import Link from "@material-ui/core/Link";
 import Menu from "../Menu/Menu";
-
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+import Loading from "../../Loading/Loading";
 
 const useStyles = makeStyles(theme => ({
   movies: {
@@ -150,14 +150,6 @@ const Movies = ({ match }) => {
     </Paper>
   );
 
-  const loading = (
-    <Paper className={classes.paperLoading}>
-      <Typography variant="h5" component="h2">
-        Loading...
-      </Typography>
-    </Paper>
-  );
-
   const movieSearch = isSearching ? (
     <Paper className={classes.paperMovies}>Buscando...</Paper>
   ) : searchTerm !== "" ? (
@@ -184,7 +176,7 @@ const Movies = ({ match }) => {
           <SearchIcon />
         </IconButton>
       </Paper>
-      {isLoading ? loading : movieSearch}
+      {isLoading ? <Loading /> : movieSearch}
     </Container>
   );
 };

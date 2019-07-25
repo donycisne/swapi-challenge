@@ -29,7 +29,10 @@ const useStyles = makeStyles(theme => ({
     fontSize: "32px",
     fontWeight: "700",
     textTransform: "uppercase",
-    padding: "30px 15px"
+    padding: "30px 15px",
+    "&:hover": {
+      textDecoration: "none"
+    }
   },
   sectionList: {
     padding: "0"
