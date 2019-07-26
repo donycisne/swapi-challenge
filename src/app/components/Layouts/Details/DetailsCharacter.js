@@ -28,7 +28,11 @@ const useStyles = makeStyles(theme => ({
   },
   characterList: {
     margin: "16px",
-    padding: "8px"
+    padding: "8px",
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: "400px",
+      margin: "16px auto"
+    }
   },
   title: {
     fontSize: "1.25rem",
@@ -49,6 +53,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "8px"
   },
   link: {
+    width: "100%",
     color: "#000",
     padding: "12px",
     fontSize: "1rem",

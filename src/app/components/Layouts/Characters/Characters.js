@@ -33,7 +33,11 @@ const useStyles = makeStyles(theme => ({
   },
   paperCharacters: {
     margin: "16px",
-    padding: "16px"
+    padding: "8px",
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: "400px",
+      margin: "16px auto"
+    }
   },
   title: {
     textAlign: "center",

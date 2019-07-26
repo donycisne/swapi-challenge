@@ -48,7 +48,11 @@ const useStyles = makeStyles(theme => ({
   },
   paperMovies: {
     margin: "16px",
-    padding: "16px"
+    padding: "8px",
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: "400px",
+      margin: "16px auto"
+    }
   },
   paperLoading: {
     margin: "16px",

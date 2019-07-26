@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlanet } from "../../../globalStore/thunks/thunkPlanet";
@@ -28,7 +28,11 @@ const useStyles = makeStyles(theme => ({
   },
   planetList: {
     margin: "16px",
-    padding: "8px"
+    padding: "8px",
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: "400px",
+      margin: "16px auto"
+    }
   },
   title: {
     fontSize: "1.25rem",
@@ -53,6 +57,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "1.75rem"
   },
   link: {
+    width: "100%",
     color: "#000",
     padding: "12px",
     fontSize: "1rem",
@@ -71,12 +76,20 @@ const DetailsPlanet = ({ match, history }) => {
 
   const { id } = match.params;
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(getPlanet(id));
   }, [dispatch, id]);
 
   const prevPage = () => {
     history.go(-1);
+  };
+
+  const upperCase = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const formatPopulation = surface => {
+    return surface.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
   const isLoading = useSelector(state => state.isLoading);
@@ -115,9 +128,7 @@ const DetailsPlanet = ({ match, history }) => {
   const climate = planet && (
     <Container className={classes.item}>
       <span className={classes.itemText}>Clima: </span>
-      <span className={classes.detailText}>
-        {planet.climate.charAt(0).toUpperCase() + planet.climate.slice(1)}
-      </span>
+      <span className={classes.detailText}>{upperCase(planet.climate)}</span>
     </Container>
   );
 
@@ -146,14 +157,20 @@ const DetailsPlanet = ({ match, history }) => {
   const surfaceWater = planet && (
     <Container className={classes.item}>
       <span className={classes.itemText}>Superficie del agua: </span>
-      <span className={classes.detailText}>{planet.surface_water}%</span>
+      <span className={classes.detailText}>
+        {planet.surface_water === "unknown"
+          ? upperCase(planet.surface_water)
+          : `${planet.surface_water}%`}
+      </span>
     </Container>
   );
 
   const population = planet && (
     <Container className={classes.item}>
       <span className={classes.itemText}>Poblaci&oacute;n: </span>
-      <span className={classes.detailText}>{planet.population}</span>
+      <span className={classes.detailText}>
+        {formatPopulation(planet.population)}
+      </span>
     </Container>
   );
 
@@ -225,22 +242,20 @@ const DetailsPlanet = ({ match, history }) => {
     );
 
   return (
-    <div>
-      <Container className={classes.detailPlanet}>
-        <Paper className={classes.paper}>
-          <Menu />
-          <Typography className={classes.title}>Planeta</Typography>
-          <IconButton
-            className={classes.iconButton}
-            aria-label="Back"
-            onClick={prevPage}
-          >
-            <ArrowBackIos />
-          </IconButton>
-        </Paper>
-        {isLoading ? <Loading /> : planetList}
-      </Container>
-    </div>
+    <Container className={classes.detailPlanet}>
+      <Paper className={classes.paper}>
+        <Menu />
+        <Typography className={classes.title}>Planeta</Typography>
+        <IconButton
+          className={classes.iconButton}
+          aria-label="Back"
+          onClick={prevPage}
+        >
+          <ArrowBackIos />
+        </IconButton>
+      </Paper>
+      {isLoading ? <Loading /> : planetList}
+    </Container>
   );
 };
 
