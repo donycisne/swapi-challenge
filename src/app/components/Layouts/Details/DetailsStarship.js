@@ -84,6 +84,10 @@ const DetailsStarship = ({ match, history }) => {
     history.go(-1);
   };
 
+  const upperCase = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   const format = surface => {
     return surface.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
@@ -190,7 +194,9 @@ const DetailsStarship = ({ match, history }) => {
   const consumables = starship && (
     <Container className={classes.item}>
       <span className={classes.itemText}>Consumibles: </span>
-      <span className={classes.detailText}>{starship.consumables}</span>
+      <span className={classes.detailText}>
+        {upperCase(starship.consumables)}
+      </span>
     </Container>
   );
 

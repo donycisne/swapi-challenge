@@ -8,7 +8,11 @@ const useStyles = makeStyles(theme => ({
   loading: {
     margin: "16px",
     padding: "16px",
-    textAlign: "center"
+    textAlign: "center",
+    [theme.breakpoints.up("sm")]: {
+      maxWidth: "400px",
+      margin: "16px auto"
+    }
   },
   progress: {
     margin: theme.spacing(2)
