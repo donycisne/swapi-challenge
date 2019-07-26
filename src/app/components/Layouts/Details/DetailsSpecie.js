@@ -168,7 +168,7 @@ const DetailsSpecie = ({ match, history }) => {
   );
 
   const homeworld =
-    nameHomeWorld && nameHomeWorld.name.length > 0
+    specie && nameHomeWorld.name.length > 0
       ? specie.homeworld && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Planeta natal: </span>

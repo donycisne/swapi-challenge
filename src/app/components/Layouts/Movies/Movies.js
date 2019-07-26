@@ -14,6 +14,7 @@ import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Loading from "../../Loading/Loading";
+import Searching from "../../Searching/Searching";
 
 const useStyles = makeStyles(theme => ({
   movies: {
@@ -155,7 +156,7 @@ const Movies = ({ match }) => {
   );
 
   const movieSearch = isSearching ? (
-    <Paper className={classes.paperMovies}>Buscando...</Paper>
+    <Searching />
   ) : searchTerm !== "" ? (
     <Paper className={classes.paperMovies}>
       {results.map(result => (
