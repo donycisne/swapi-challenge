@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacter } from "../../../globalStore/thunks/thunkCharacter";
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   characterList: {
     margin: "16px",
-    padding: "16px"
+    padding: "8px"
   },
   title: {
     fontSize: "1.25rem",
@@ -67,26 +67,112 @@ const DetailsCharacter = ({ match, history }) => {
 
   const { id } = match.params;
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(getCharacter(id));
   }, [dispatch, id]);
-
-  const character = useSelector(state => state.character);
-  const nameMovies = useSelector(state => state.nameMovies);
-  const isLoading = useSelector(state => state.isLoading);
-  const nameHomeWorld = useSelector(state => state.nameHomeWorld);
-  const nameSpecies = useSelector(state => state.nameSpecies);
-  const nameStarships = useSelector(state => state.nameStarships);
-  const nameVehicles = useSelector(state => state.nameVehicles);
 
   const prevPage = () => {
     history.go(-1);
   };
 
+  const isLoading = useSelector(state => state.isLoading);
+  const character = useSelector(state => state.character);
+  const nameHomeWorld = useSelector(state => state.nameHomeWorld);
+  const nameMovies = useSelector(state => state.nameMovies);
+  const nameSpecies = useSelector(state => state.nameSpecies);
+  const nameStarships = useSelector(state => state.nameStarships);
+  const nameVehicles = useSelector(state => state.nameVehicles);
+
+  const name = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Nombre: </span>
+      <span className={classes.detailText}>{character.name}</span>
+    </Container>
+  );
+
+  const birthYear = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Nacimiento: </span>
+      <span className={classes.detailText}>{character.birth_year}</span>
+    </Container>
+  );
+
+  const eyeColor = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Color de ojos: </span>
+      <span className={classes.detailText}>
+        {character.eye_color.charAt(0).toUpperCase() +
+          character.eye_color.slice(1)}
+      </span>
+    </Container>
+  );
+
+  const gender = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>G&eacute;nero: </span>
+      <span className={classes.detailText}>
+        {character.gender.charAt(0).toUpperCase() + character.gender.slice(1)}
+      </span>
+    </Container>
+  );
+
+  const hairColor = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Color de cabello: </span>
+      <span className={classes.detailText}>
+        {character.hair_color.charAt(0).toUpperCase() +
+          character.hair_color.slice(1)}
+      </span>
+    </Container>
+  );
+
+  const height = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Estatura: </span>
+      <span className={classes.detailText}>{character.height} cm</span>
+    </Container>
+  );
+
+  const mass = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Peso: </span>
+      <span className={classes.detailText}>{character.mass} kg</span>
+    </Container>
+  );
+
+  const skinColor = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Color de piel: </span>
+      <span className={classes.detailText}>
+        {character.skin_color.charAt(0).toUpperCase() +
+          character.skin_color.slice(1)}
+      </span>
+    </Container>
+  );
+
+  const homeworld = character && (
+    <Container className={classes.item}>
+      <span className={classes.itemText}>Hogar: </span>
+      <List>
+        <ListItem className={classes.listItem}>
+          <Link
+            className={classes.link}
+            to={`/planetas/${nameHomeWorld.url.slice(
+              nameHomeWorld.url.indexOf("planets") + "planets".length + 1,
+              nameHomeWorld.url.length - 1
+            )}`}
+          >
+            {nameHomeWorld.name}
+          </Link>
+        </ListItem>
+      </List>
+    </Container>
+  );
+
   const films =
     nameMovies && nameMovies.length > 0
       ? character && (
-          <React.Fragment>
+          <Container className={classes.item}>
             <span className={classes.itemText}>Pel&iacute;culas: </span>
             <List>
               {character.films.map((film, index) => (
@@ -103,14 +189,14 @@ const DetailsCharacter = ({ match, history }) => {
                 </ListItem>
               ))}
             </List>
-          </React.Fragment>
+          </Container>
         )
       : null;
 
   const species =
     nameSpecies && nameSpecies.length > 0
       ? character && (
-          <React.Fragment>
+          <Container className={classes.item}>
             <span className={classes.itemText}>Especies: </span>
             <List>
               {character.species.map((specie, index) => (
@@ -127,14 +213,14 @@ const DetailsCharacter = ({ match, history }) => {
                 </ListItem>
               ))}
             </List>
-          </React.Fragment>
+          </Container>
         )
       : null;
 
   const starships =
     nameStarships && nameStarships.length > 0
       ? character && (
-          <React.Fragment>
+          <Container className={classes.item}>
             <span className={classes.itemText}>Naves: </span>
             <List>
               {character.starships.map((starship, index) => (
@@ -151,14 +237,14 @@ const DetailsCharacter = ({ match, history }) => {
                 </ListItem>
               ))}
             </List>
-          </React.Fragment>
+          </Container>
         )
       : null;
 
   const vehicles =
     nameVehicles && nameVehicles.length > 0
       ? character && (
-          <React.Fragment>
+          <Container className={classes.item}>
             <span className={classes.itemText}>Veh&iacute;culos: </span>
             <List>
               {character.vehicles.map((vehicle, index) => (
@@ -175,82 +261,26 @@ const DetailsCharacter = ({ match, history }) => {
                 </ListItem>
               ))}
             </List>
-          </React.Fragment>
+          </Container>
         )
       : null;
-
-  const homeworld = character && (
-    <React.Fragment>
-      <span className={classes.itemText}>Hogar: </span>
-      <List>
-        <ListItem className={classes.listItem}>
-          <Link
-            className={classes.link}
-            to={`/planetas/${nameHomeWorld.url.slice(
-              nameHomeWorld.url.indexOf("planets") + "planets".length + 1,
-              nameHomeWorld.url.length - 1
-            )}`}
-          >
-            {nameHomeWorld.name}
-          </Link>
-        </ListItem>
-      </List>
-    </React.Fragment>
-  );
 
   const characterList =
     character && character ? (
       <Paper className={classes.characterList}>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Nombre: </span>
-          <span className={classes.detailText}>{character.name}</span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Nacimiento: </span>
-          <span className={classes.detailText}>{character.birth_year}</span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Color de ojos: </span>
-          <span className={classes.detailText}>
-            {character.eye_color.charAt(0).toUpperCase() +
-              character.eye_color.slice(1)}
-          </span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>G&eacute;nero: </span>
-          <span className={classes.detailText}>
-            {character.gender.charAt(0).toUpperCase() +
-              character.gender.slice(1)}
-          </span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Color de cabello: </span>
-          <span className={classes.detailText}>
-            {character.hair_color.charAt(0).toUpperCase() +
-              character.hair_color.slice(1)}
-          </span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Estatura: </span>
-          <span className={classes.detailText}>{character.height} cm</span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Peso: </span>
-          <span className={classes.detailText}>{character.mass} kg</span>
-        </Container>
-        <Container className={classes.item}>
-          <span className={classes.itemText}>Color de piel: </span>
-          <span className={classes.detailText}>
-            {console.log(character)}
-            {character.skin_color.charAt(0).toUpperCase() +
-              character.skin_color.slice(1)}
-          </span>
-        </Container>
-        <Container className={classes.item}>{homeworld}</Container>
-        <Container className={classes.item}>{films}</Container>
-        <Container className={classes.item}>{species}</Container>
-        <Container className={classes.item}>{starships}</Container>
-        <Container className={classes.item}>{vehicles}</Container>
+        {name}
+        {birthYear}
+        {eyeColor}
+        {gender}
+        {hairColor}
+        {height}
+        {mass}
+        {skinColor}
+        {homeworld}
+        {films}
+        {species}
+        {starships}
+        {vehicles}
       </Paper>
     ) : (
       <Loading />
