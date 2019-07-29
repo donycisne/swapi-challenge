@@ -59,6 +59,11 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#dadada",
       textDecoration: "none"
     }
+  },
+  search: {
+    border: "1px solid #cecece",
+    borderRadius: "50px",
+    padding: "0 16px"
   }
 }));
 
@@ -184,6 +189,7 @@ const Characters = ({ match }) => {
       <Paper className={classes.paper}>
         <Menu />
         <InputBase
+          className={classes.search}
           placeholder="Buscar"
           inputProps={{ "aria-label": "Buscar" }}
           onChange={e => setSearchTerm(e.target.value)}

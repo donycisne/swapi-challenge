@@ -72,6 +72,11 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#dadada",
       textDecoration: "none"
     }
+  },
+  search: {
+    border: "1px solid #cecece",
+    borderRadius: "50px",
+    padding: "0 16px"
   }
 }));
 
@@ -100,14 +105,22 @@ const Movies = ({ match }) => {
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  const searchMovies = search => {
-    return fetch(`https://swapi.co/api/films/?search=${search}`)
-      .then(response => response.json())
-      .then(response => response.results.map(movie => movie.title))
-      .catch(error => {
-        console.error(error);
-        return [];
-      });
+  const searchMovies = async search => {
+    try {
+      const request = await fetch(
+        `https://swapi.co/api/films/?search=${search}`
+      );
+      const response = await request.json();
+      const values = response.results;
+      const searchValues = values.reduce((acc, cur) => {
+        return acc.concat([{ title: cur.title, url: cur.url }]);
+      }, []);
+
+      return searchValues;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   };
 
   React.useEffect(() => {
@@ -160,7 +173,18 @@ const Movies = ({ match }) => {
   ) : searchTerm !== "" ? (
     <Paper className={classes.paperMovies}>
       {results.map(result => (
-        <p key={result}>{result}</p>
+        <ListItem key={result.title} className={classes.listItem}>
+          <Link
+            component={RouteLink}
+            className={classes.link}
+            to={`${match.url}/${result.url.slice(
+              result.url.indexOf("films") + "films".length + 1,
+              result.url.length - 1
+            )}`}
+          >
+            {result.title}
+          </Link>
+        </ListItem>
       ))}
     </Paper>
   ) : (
