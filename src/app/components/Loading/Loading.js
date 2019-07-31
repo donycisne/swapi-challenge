@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("sm")]: {
       maxWidth: "400px",
       margin: "16px auto"
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "850px"
     }
   },
   progress: {

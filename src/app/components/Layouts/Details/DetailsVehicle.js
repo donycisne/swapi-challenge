@@ -32,14 +32,27 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("sm")]: {
       maxWidth: "400px",
       margin: "16px auto"
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "850px"
     }
   },
   title: {
     fontSize: "1.25rem",
     fontWeight: 700
   },
+  itemsList: {
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      flexWrap: "wrap"
+    }
+  },
   listItem: {
-    padding: "8px 0"
+    padding: "8px 0",
+    [theme.breakpoints.up("md")]: {
+      width: "32%",
+      margin: "0 5px"
+    }
   },
   item: {
     margin: "16px 0"
@@ -191,7 +204,7 @@ const DetailsVehicle = ({ match, history }) => {
       ? vehicle && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Pel&iacute;culas: </span>
-            <List>
+            <List className={classes.itemsList}>
               {vehicle.films.map((film, index) => (
                 <ListItem key={film} className={classes.listItem}>
                   <Link
@@ -215,7 +228,7 @@ const DetailsVehicle = ({ match, history }) => {
       ? vehicle && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Pilotos: </span>
-            <List>
+            <List className={classes.itemsList}>
               {vehicle.pilots.map((pilot, index) => (
                 <ListItem key={pilot} className={classes.listItem}>
                   <Link

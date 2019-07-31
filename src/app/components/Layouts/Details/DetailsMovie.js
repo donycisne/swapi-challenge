@@ -32,14 +32,27 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("sm")]: {
       maxWidth: "400px",
       margin: "16px auto"
+    },
+    [theme.breakpoints.up("md")]: {
+      maxWidth: "850px"
     }
   },
   title: {
     fontSize: "1.25rem",
     fontWeight: 700
   },
+  itemsList: {
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      flexWrap: "wrap"
+    }
+  },
   listItem: {
-    padding: "8px 0"
+    padding: "8px 0",
+    [theme.breakpoints.up("md")]: {
+      width: "32%",
+      margin: "0 5px"
+    }
   },
   item: {
     margin: "16px 0"
@@ -175,7 +188,7 @@ const DetailsMovie = ({ match, history }) => {
       ? movie && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Personajes: </span>
-            <List>
+            <List className={classes.itemsList}>
               {movie.characters.map((character, index) => (
                 <ListItem key={character} className={classes.listItem}>
                   <Link
@@ -199,7 +212,7 @@ const DetailsMovie = ({ match, history }) => {
       ? movie && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Planetas: </span>
-            <List>
+            <List className={classes.itemsList}>
               {movie.planets.map((planet, index) => (
                 <ListItem key={planet} className={classes.listItem}>
                   <Link
@@ -223,7 +236,7 @@ const DetailsMovie = ({ match, history }) => {
       ? movie && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Naves: </span>
-            <List>
+            <List className={classes.itemsList}>
               {movie.starships.map((starship, index) => (
                 <ListItem key={starship} className={classes.listItem}>
                   <Link
@@ -247,7 +260,7 @@ const DetailsMovie = ({ match, history }) => {
       ? movie && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Veh&iacute;culos: </span>
-            <List>
+            <List className={classes.itemsList}>
               {movie.vehicles.map((vehicle, index) => (
                 <ListItem key={vehicle} className={classes.listItem}>
                   <Link
@@ -271,7 +284,7 @@ const DetailsMovie = ({ match, history }) => {
       ? movie && (
           <Container className={classes.item}>
             <span className={classes.itemText}>Veh&iacute;culos: </span>
-            <List>
+            <List className={classes.itemsList}>
               {movie.species.map((specie, index) => (
                 <ListItem key={specie} className={classes.listItem}>
                   <Link
