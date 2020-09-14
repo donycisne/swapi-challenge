@@ -11,7 +11,7 @@ export function getPlanet(id) {
     dispatch(getPlanetRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/planets/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/planets/${id}/`);
       const response = await request.json();
       const planet = response;
 

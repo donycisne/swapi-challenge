@@ -11,7 +11,7 @@ export function getStarship(id) {
     dispatch(getStarshipRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/starships/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/starships/${id}/`);
       const response = await request.json();
       const starship = response;
 

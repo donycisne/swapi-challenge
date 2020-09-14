@@ -108,7 +108,7 @@ const Movies = ({ match }) => {
   const searchMovies = async search => {
     try {
       const request = await fetch(
-        `https://swapi.co/api/films/?search=${search}`
+        `https://swapi.dev/api/films/?search=${search}`
       );
       const response = await request.json();
       const values = response.results;

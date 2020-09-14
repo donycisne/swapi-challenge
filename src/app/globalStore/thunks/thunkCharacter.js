@@ -11,7 +11,7 @@ export function getCharacter(id) {
     dispatch(getCharacterRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/people/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/people/${id}/`);
       const response = await request.json();
       const character = response;
 

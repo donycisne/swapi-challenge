@@ -95,7 +95,7 @@ const Characters = ({ match }) => {
   const searchCharacters = async search => {
     try {
       const request = await fetch(
-        `https://swapi.co/api/people/?search=${search}`
+        `https://swapi.dev/api/people/?search=${search}`
       );
       const response = await request.json();
       const values = response.results;

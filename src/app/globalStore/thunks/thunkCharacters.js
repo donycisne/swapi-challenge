@@ -9,7 +9,7 @@ export function getCharacters() {
     dispatch(getCharactersRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/people/`);
+      const request = await fetch(`https://swapi.dev/api/people/`);
       const response = await request.json();
       const characters = response.results;
 

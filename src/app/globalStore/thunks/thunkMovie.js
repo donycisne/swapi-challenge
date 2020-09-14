@@ -11,7 +11,7 @@ export function getMovie(id) {
     dispatch(getMovieRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/films/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/films/${id}/`);
       const response = await request.json();
       const movie = response;
 

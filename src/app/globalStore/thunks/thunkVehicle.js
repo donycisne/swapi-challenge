@@ -11,7 +11,7 @@ export function getVehicle(id) {
     dispatch(getVehicleRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/vehicles/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/vehicles/${id}/`);
       const response = await request.json();
       const vehicle = response;
 

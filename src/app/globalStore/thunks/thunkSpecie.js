@@ -11,7 +11,7 @@ export function getSpecie(id) {
     dispatch(getSpecieRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/species/${id}/`);
+      const request = await fetch(`https://swapi.dev/api/species/${id}/`);
       const response = await request.json();
       const specie = response;
 

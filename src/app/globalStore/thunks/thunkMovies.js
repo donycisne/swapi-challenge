@@ -9,7 +9,7 @@ export function getMovies() {
     dispatch(getMoviesRequest());
 
     try {
-      const request = await fetch(`https://swapi.co/api/films/`);
+      const request = await fetch(`https://swapi.dev/api/films/`);
       const response = await request.json();
       const movies = response.results;
 
