@@ -2,7 +2,7 @@
 
 ## Demo
 
-**https://swapi-challenge.now.sh/**
+**https://swapi-frontend-challenge-donycisne.vercel.app/**
 
 ## Main Features
 
