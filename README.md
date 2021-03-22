@@ -1,59 +1,70 @@
-# Swapi Frontend Challenge
+# Getting Started with Create React App
 
-## Demo
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**https://swapi-frontend-challenge-donycisne.vercel.app/**
+## Available Scripts
 
-## Main Features
+In the project directory, you can run:
 
-- [x] Use React and Redux.
-- [x] Use the SWAPI to get the data.
-- [x] Followthe Material Design guidelines, you can use Material-UI as components following that follows the guidelines.
-- [x] Show the information in Spanish except for proper nouns.
-- [x] Be responsive down to mobile phone screen sizes.
-- [x] Be stored in a SCM (i.e GitHub).
-- [x] Be hosted in a server.
-- [x] Be presented for a final customer, this means that you must include everything considered necessary for that.
-- [x] The app has to include a navigation menu on the left side of the screen with two sections, Characters and Movies.
+### `npm start`
 
-## Character Features
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- [x] This Screen should show a list of characters using pagination and loading more when the user reaches the bottom of the list.
-- [ ] The list should have a search input and filter using the search endpoint of the API provided.
-- [x] Whenever the user clicks on a row it should show the detailed information of that character on the right.
-- [x] The detail should have a navigation link to show the detail of the clicked movie in the other section.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Movie Features
+### `npm test`
 
-- [x] This Screen should show a list of movies.
-- [ ] The list should have a search input and filter by client’s name side.
-- [x] When the user clicks on a row it should show the detailed information of that
-      movie on the right.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Company Guidelines
+### `npm run build`
 
-- Pixel Perfect
-- Mobile First
-- Great Accesibilty
-- Focus on UI/UX
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Extra (if there's time left)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Also feel free to add more information, images, behaviours or whatever you consider necessary to create a great work!
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Following Steps
+### `npm run eject`
 
-1. Create Layout with Material UI
-2. Integrate React Router
-3. Integrate Redux and Redux Thunk
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Infinite Scroll
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Can handle it in 2 ways:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- Intersection Observer
-- [React Infinite Scroller](https://github.com/CassetteRocks/react-infinite-scroller)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## License
+## Learn More
 
-MIT © Dony Cisneros
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
